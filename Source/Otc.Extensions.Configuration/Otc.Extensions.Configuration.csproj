@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup Label="Globals">
     <SccProjectName>SAK</SccProjectName>
@@ -10,6 +10,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.6</TargetFramework>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <VersionPrefix>2.0.0</VersionPrefix>
     <Authors>Ole Consignado</Authors>
     <Company>Ole Consignado</Company>
   </PropertyGroup>
@@ -17,7 +18,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="1.1.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="1.1.2" />
-    <PackageReference Include="Otc.Validations" Version="1.0.0-v100-alpha1-build2" />
+    <PackageReference Include="Otc.Validations" Version="2.0.0" />
   </ItemGroup>
 
 </Project>
