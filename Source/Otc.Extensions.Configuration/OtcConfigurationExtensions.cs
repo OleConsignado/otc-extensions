@@ -10,17 +10,30 @@ namespace Otc.Extensions.Configuration
     public static class OtcConfigurationExtensions
     {
         /// <summary>
-        /// Obtem uma secao de configuracao em um objeto do tipo T e realiza uma validacao baseada 
-        /// em atributos de System.ComponentModel.DataAnnotations. Caso a validacao falhe, uma <see cref="InvalidOperationException"/>
-        /// sera lancada.
+        /// Le e valida configuracoes.
+        /// <para>
+        /// Verifica se existe uma secao do IConfiguration cuja o nome coincide com o nome do tipo T fornecido,
+        /// caso a secao exista, le as propriedades da secao e vincula a uma nova instancia do tipo T;
+        /// caso a secao nao existe, tentar ler as propriedades da raiz do IConfiguration e vincula a uma nova instancia do tipo T;
+        /// </para>
+        /// <para>
+        /// Posteriormente a instancia T criada eh validada com base em Otc.ComponentModel.Annotation; caso a validacao
+        /// falhe, uma excecao do tipo InvalidOperationException sera lancada.
+        /// </para>
         /// </summary>
         /// <typeparam name="T">Tipo do objeto a ser criado e devolvido.</typeparam>
-        /// <param name="configuration">A secao de configuracao a ser lida.</param>
-        /// <exception cref="InvalidOperationException">Caso o objeto nao seja aceito pela validacao baseada 
-        /// em atributos de System.ComponentModel.DataAnnotations</exception>
+        /// <param name="configuration">O object IConfiguration.</param>
+        /// <exception cref="InvalidOperationException" />
         /// <returns>O objeto preenchido com os valores presentes nas configuracoes</returns>
         public static T SafeGet<T>(this IConfiguration configuration)
         {
+            var typeName = typeof(T).Name;
+
+            if (configuration.GetChildren().Any(item => item.Key == typeName))
+            {
+                configuration = configuration.GetSection(typeName);
+            }          
+
             T model = configuration.Get<T>();
 
             if (model == null)
