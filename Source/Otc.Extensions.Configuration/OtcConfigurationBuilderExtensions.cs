@@ -11,7 +11,7 @@ namespace Microsoft.Extensions.Configuration
         /// <param name="builder">Configuration Builder.</param>
         /// <param name="configurationObject">Objeto portador das configurações.</param>
         /// <returns>Próprio configuration builder com o provedor adicionado.</returns>
-        public static IConfigurationBuilder AddJsonObject<T>(this IConfigurationBuilder builder, T configurationObject)
+        public static IConfigurationBuilder AddObject<T>(this IConfigurationBuilder builder, T configurationObject)
             where T : class
         {
             return builder.Add(new JsonObjectConfigurationSource(configurationObject));
