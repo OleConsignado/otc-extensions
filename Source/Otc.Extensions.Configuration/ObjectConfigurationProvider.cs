@@ -6,11 +6,11 @@ using System.Text;
 
 namespace Otc.Extensions.Configuration
 {
-    internal class JsonObjectConfigurationProvider : JsonConfigurationProvider
+    internal class ObjectConfigurationProvider : JsonConfigurationProvider
     {
         private readonly object configurationObject;
 
-        public JsonObjectConfigurationProvider(JsonConfigurationSource source, object configurationObject) : base(source)
+        public ObjectConfigurationProvider(JsonConfigurationSource source, object configurationObject) : base(source)
         {
             this.configurationObject = configurationObject ?? throw new ArgumentNullException(nameof(configurationObject));
         }
