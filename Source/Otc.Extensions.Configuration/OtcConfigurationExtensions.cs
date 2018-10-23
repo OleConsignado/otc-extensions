@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Otc.ComponentModel.DataAnnotations;
 using Otc.Validations;
 using System;
 using System.Collections.Generic;
-using Otc.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace Otc.Extensions.Configuration
